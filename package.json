@@ -1,9 +1,24 @@
 {
   "name": "code-express-orm-mariadb",
-  "version": "0.1.0",
-  "description": "Code Express ORM MariaDB ",
-  "main": "index.js",
-  "author": "M Haidar Hanif <git@mhaidarhanif.com>",
-  "license": "MIT",
-  "private": true
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index",
+    "dev": "node-dev index"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv-extended": "^2.2.0",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mariadb": "^0.7.0",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "node-dev": "^3.1.3"
+  }
 }
