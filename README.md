@@ -101,13 +101,40 @@ yarn start
 
 ![Data Schema](./assets/data-schema.png)
 
+**Users**
+
+```json
+{
+  "id": 0,
+  "email": "",
+  "password": "",
+  "salt": "",
+  "username": "",
+  "name": ""
+}
+```
+
+**Tasks**
+
+```json
+{
+  "id": 0,
+  "user_id": 0,
+  "text": ""
+}
+```
+
 ### How to Use Sequelize
 
-- <http://docs.sequelizejs.com/manual/tutorial/migrations.html>
+Follow this official guide: <http://docs.sequelizejs.com/manual/tutorial/migrations.html>
+
+Install `sequelize` dependencies in your project.
 
 ```sh
 yarn add sequelize mysql2 mariadb sqlite
 ```
+
+Use `sequelize-cli` to initialize and configure the project.
 
 ```sh
 # install sequelize-cli globally
@@ -147,7 +174,7 @@ sequelize db:seed:all
 
 ### How to Integrate with Express
 
-Change this `server.listen`:
+Change the `server.listen` code block.
 
 ```js
 server.listen(port, function() {
@@ -157,7 +184,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 ```
 
-Into this, to be wrapped with `models.sequelize`:
+Into this, to be wrapped with `models.sequelize`.
 
 ```js
 const models = require('./models');
@@ -174,7 +201,7 @@ models.sequelize.sync().then(function() {
 });
 ```
 
-Use the model, from anywhere:
+Use the model from anywhere. For instance, in your controller functions.
 
 ```js
 const models = require('../../models');
@@ -194,7 +221,11 @@ models.User.findAll()
   });
 ```
 
-### How to Backup & Restore Database
+Run `express` server as usual.
+
+### Database Dump
+
+How to backup/export & restore/import database from/to a file.
 
 **Export:**
 
