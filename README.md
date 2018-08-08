@@ -116,22 +116,76 @@ sequelize init
 
 sequelize model:generate --name User --attributes username:string,email:string
 
-# edit migration/model files
+# edit migrations file
+# migrations/20180000000000-create-user.js
+
+# edit models file
+# models/user.js
 
 sequelize db:migrate
 
 sequelize seed:generate --name demo-users
 
-# edit seed file
+# edit seeders file
+# seeders/20180000000000-demo-users.js
 
 sequelize db:seed:all
 ```
 
-### How to Backup Database
+### How to Integrate with Express
+
+Change this:
+
+```js
+server.listen(port, function() {
+  console.log('Express server listening on port ' + server.address().port);
+});
+server.on('error', onError);
+server.on('listening', onListening);
+```
+
+Into this:
+
+```js
+models.sequelize.sync().then(function() {
+  server.listen(port, function() {
+    console.log('Express server listening on port ' + server.address().port);
+    debug('Express server listening on port ' + server.address().port);
+  });
+  server.on('error', onError);
+  server.on('listening', onListening);
+});
+```
+
+Use the model, from anywhere:
+
+```js
+const models = require('../../models');
+
+// ...
+
+models.User.findAll()
+  .then(users => {
+    res.send({
+      users
+    });
+  })
+  .catch(error => {
+    res.status(400).send({
+      error
+    });
+  });
+```
+
+### How to Backup & Restore Database
+
+**Export:**
 
 ```sh
 mysqldump yourdatabase --single-transaction --user=yourusername -p > yourfile.sql
 ```
+
+**Import:**
 
 ```sh
 mysql yourdatabase --user=yourusername -p < yourfile.sql
