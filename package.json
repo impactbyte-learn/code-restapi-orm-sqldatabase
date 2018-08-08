@@ -1,0 +1,9 @@
+{
+  "name": "code-express-orm-mariadb",
+  "version": "0.1.0",
+  "description": "Code Express ORM MariaDB ",
+  "main": "index.js",
+  "author": "M Haidar Hanif <git@mhaidarhanif.com>",
+  "license": "MIT",
+  "private": true
+}
