@@ -44,3 +44,7 @@ yarn dev
 yarn
 yarn start
 ```
+
+## Data Schema
+
+![Data Schema](./assets/data-schema.png)
