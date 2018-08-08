@@ -110,10 +110,20 @@ yarn add sequelize mysql2 mariadb sqlite
 ```
 
 ```sh
+# install sequelize-cli globally
 yarn global add sequelize-cli sequelize mysql2 mariadb sqlite
 
+# so you can use it anywhere
 sequelize init
 
+# change config.json to config.js
+
+# change '/../config/config.js' in models/index.js
+
+# configure config.js based on your database settings
+# change database name, username, password, host, port, dialect
+
+# generate model via cli
 sequelize model:generate --name User --attributes username:string,email:string
 
 # edit migrations file
@@ -122,19 +132,22 @@ sequelize model:generate --name User --attributes username:string,email:string
 # edit models file
 # models/user.js
 
+# do the migration from the configuration to the actual database
 sequelize db:migrate
 
+# generate seeder via cli
 sequelize seed:generate --name demo-users
 
 # edit seeders file
 # seeders/20180000000000-demo-users.js
 
+# do the seeding from the configuration to the actual database
 sequelize db:seed:all
 ```
 
 ### How to Integrate with Express
 
-Change this:
+Change this `server.listen`:
 
 ```js
 server.listen(port, function() {
@@ -144,9 +157,13 @@ server.on('error', onError);
 server.on('listening', onListening);
 ```
 
-Into this:
+Into this, to be wrapped with `models.sequelize`:
 
 ```js
+const models = require('./models');
+
+// ...
+
 models.sequelize.sync().then(function() {
   server.listen(port, function() {
     console.log('Express server listening on port ' + server.address().port);
