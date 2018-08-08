@@ -48,3 +48,30 @@ yarn start
 ## Data Schema
 
 ![Data Schema](./assets/data-schema.png)
+
+## Using Sequelize
+
+- <http://docs.sequelizejs.com/manual/tutorial/migrations.html>
+
+```sh
+yarn add sequelize mysql2 mariadb sqlite
+```
+
+```sh
+npm i -g sequelize-cli
+npm i -g sequelize mysql2 mariadb sqlite
+
+sequelize init
+
+sequelize model:generate --name User --attributes username:string,email:string
+
+# edit migration/model files
+
+sequelize db:migrate
+
+sequelize seed:generate --name demo-users
+
+# edit seed file
+
+sequelize db:seed:all
+```
