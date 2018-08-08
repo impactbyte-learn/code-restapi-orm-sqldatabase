@@ -75,3 +75,13 @@ sequelize seed:generate --name demo-users
 
 sequelize db:seed:all
 ```
+
+## Backup Database
+
+```sh
+mysqldump yourdatabase --single-transaction --user=yourusername -p > yourfile.sql
+```
+
+```sh
+mysql yourdatabase --user=yourusername -p < yourfile.sql
+```
