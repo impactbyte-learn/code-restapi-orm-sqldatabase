@@ -13,6 +13,16 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
+      username: 'michaeltamsil',
+      email: 'michaeltamsil@example.com',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      username: 'amirul-inc',
+      email: 'amirul@example.com',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
       username: 'abbayosua',
       email: 'abba@example.com',
       createdAt: new Date(),
@@ -50,16 +60,6 @@ module.exports = {
     }, {
       username: 'wondoindra',
       email: 'wondoindra@example.com',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }, {
-      username: 'michaeltamsil',
-      email: 'michaeltamsil@example.com',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }, {
-      username: 'amirul-inc',
-      email: 'amirul@example.com',
       createdAt: new Date(),
       updatedAt: new Date()
     }]
