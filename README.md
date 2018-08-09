@@ -1,12 +1,20 @@
-# Code Express ORM MariaDB
+# Code REST API ORM SQL Database
 
-Express-based REST API server with ORM and MariaDB/MySQL.
+Code example to build a REST API with ORM and SQL Database.
+
+Technologies:
+
+- [Express](https://expressjs.com) REST API server
+- [Sequelize](http://docs.sequelizejs.com) ORM
+- [MariaDB](https://mariadb.org)/[MySQL](https://mysql.com) database
 
 ---
 
 ## Preparation
 
 ### Database Installation
+
+We recommend using `mariadb` instead of `mysql`. Although the `node` adapter can be using `mysql2` adapter.
 
 **macOS:**
 
@@ -178,33 +186,33 @@ Change the `server.listen` code block.
 
 ```js
 server.listen(port, function() {
-  console.log('Express server listening on port ' + server.address().port);
-});
-server.on('error', onError);
-server.on('listening', onListening);
+  console.log('Express server listening on port ' + server.address().port)
+})
+server.on('error', onError)
+server.on('listening', onListening)
 ```
 
 Into this, to be wrapped with `models.sequelize`.
 
 ```js
-const models = require('./models');
+const models = require('./models')
 
 // ...
 
 models.sequelize.sync().then(function() {
   server.listen(port, function() {
-    console.log('Express server listening on port ' + server.address().port);
-    debug('Express server listening on port ' + server.address().port);
-  });
-  server.on('error', onError);
-  server.on('listening', onListening);
-});
+    console.log('Express server listening on port ' + server.address().port)
+    debug('Express server listening on port ' + server.address().port)
+  })
+  server.on('error', onError)
+  server.on('listening', onListening)
+})
 ```
 
 Use the model from anywhere. For instance, in your controller functions.
 
 ```js
-const models = require('../../models');
+const models = require('../../models')
 
 // ...
 
@@ -212,13 +220,13 @@ models.User.findAll()
   .then(users => {
     res.send({
       users
-    });
+    })
   })
   .catch(error => {
     res.status(400).send({
       error
-    });
-  });
+    })
+  })
 ```
 
 Run `express` server as usual.
