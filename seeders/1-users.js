@@ -9,12 +9,14 @@ module.exports = {
 
     const demoUsers = [
       {
+        name: 'M Haidar Hanif',
         username: 'haidar',
         email: 'haidar@example.com',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
+        name: 'Michael Tamsil',
         username: 'michaeltamsil',
         email: 'michaeltamsil@example.com',
         createdAt: new Date(),
