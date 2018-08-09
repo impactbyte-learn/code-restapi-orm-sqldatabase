@@ -36,7 +36,8 @@ Technologies:
 
 ### Database Installation
 
-We recommend using `mariadb` instead of `mysql`. Although the `node` adapter can be using `mysql2` adapter.
+We recommend using `mariadb` instead of `mysql`.
+Although the `node` adapter can be using `mysql2` adapter.
 
 **macOS:**
 
@@ -339,12 +340,14 @@ heroku login
 ```
 
 Create `Procfile` and add this line.
+It will be used for Heroku on how to start the app.
 
 ```txt
 web: yarn start
 ```
 
 Create `app.json` and add these lines.
+It will be used for Heroku to identify the app.
 
 ```json
 {
@@ -390,8 +393,19 @@ Push to Heroku through Git.
 git push heroku master
 ```
 
-On Heroku server, the repo will:
+On Heroku server, the Heroku platform will in order:
 
-1. Be cloned fresh either from push or GitHub new commit trigger.
-2. Run the dependency installation based on `package.json`.
-3. Automatically run the `install` and `run` scripts
+- Be cloned fresh either from push or GitHub new commit trigger.
+- Detect the repo if it's a Node.js app.
+- Create runtime environment, especially set `NODE_ENV=production`.
+- Install Node.js, npm, and yarn binaries.
+- Restore cache.
+- Build dependencies.
+  - Install node modules.
+  - Run `install` script. In this case, run `npm run setup` and `npm run migrate` scripts.
+- Run the dependency installation based on `package.json`'s `dependencies`.
+- Run `Procfile`'s `web` script. In this case, run `yarn start`.
+
+You can see those in details in "Activity" panel: <https://dashboard.heroku.com/apps/yourappname/activity>.
+
+If there's something wrong with your database, connect to its server and resolve the issue.
