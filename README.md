@@ -138,7 +138,14 @@ Use `sequelize-cli` to initialize and configure the project.
 
 ```sh
 # install sequelize-cli globally
-yarn global add sequelize-cli sequelize mysql2 mariadb sqlite
+yarn global add sequelize-cli sequelize mysql2 mariadb
+
+# install sqlite or sqlite3 (some ubuntu fail to install)
+yarn global add sqlite
+```
+or 
+```sh
+yarn global add sqlite3
 
 # so you can use it anywhere
 sequelize init
