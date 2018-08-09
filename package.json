@@ -5,6 +5,7 @@
   "scripts": {
     "setup": "./setup.sh",
     "migrate": "sequelize db:migrate && sequelize db:seed:all",
+    "migrate:undo": "sequelize db:seed:undo:all && sequelize db:migrate:undo:all",
     "start": "node index",
     "dev": "node-dev index"
   },
