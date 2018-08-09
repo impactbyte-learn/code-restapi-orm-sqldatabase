@@ -3,16 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "preinstall": "npm run setup",
-    "setup": "./setup.sh && npm run migrate",
+    "preinstall": "npm run setup && npm run migrate",
+    "setup": "./setup.sh",
     "migrate": "sequelize db:migrate && sequelize db:seed:all",
     "migrate:undo": "sequelize db:seed:undo:all && sequelize db:migrate:undo:all",
     "start": "node index",
-    "start:production": "NODE_ENV=production heroku local web",
     "dev": "node-dev index",
     "test": "node test",
     "lint": "eslint *.js",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "migrate:production": "sequelize db:migrate --env production && sequelize db:seed:all --env production",
+    "migrate:production:undo": "sequelize db:seed:undo:all --env production && sequelize db:migrate:undo:all --env production",
+    "start:production": "NODE_ENV=production heroku local web",
+    "start:production:migrate": "NODE_ENV=production heroku local migrate"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
