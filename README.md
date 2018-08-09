@@ -16,6 +16,7 @@ Technologies:
   - [Table of Contents](#table-of-contents)
   - [Preparation](#preparation)
     - [Database Installation](#database-installation)
+  - [Setup database for all environments](#setup-database-for-all-environments)
   - [Installation and Configuration](#installation-and-configuration)
   - [Running](#running)
     - [Development](#development)
@@ -50,6 +51,25 @@ brew services start mariadb
 
 - [Install MariaDB 10.3 on Ubuntu 18.04 and CentOS 7 - Computingforgeeks](https://computingforgeeks.com/install-mariadb-10-on-ubuntu-18-04-and-centos-7)
 - [How To Install MySQL on Ubuntu 18.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04)
+
+## Setup database for all environments
+
+In local.
+
+```sql
+# for development
+CREATE DATABASE yourdatabasename
+```
+
+In remote server.
+
+```sql
+# for test
+CREATE DATABASE yourdatabasename_test
+
+# for production
+CREATE DATABASE yourdatabasename
+```
 
 ## Installation and Configuration
 
