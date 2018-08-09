@@ -52,41 +52,59 @@ brew services start mariadb
 
 ## Installation and Configuration
 
-Install dependencies:
+Install dependencies.
 
 ```sh
 yarn
 ```
 
-Run `setup` script:
+This will also run the `setup` script automatically.
 
 ```sh
 yarn setup
-# this will copy .env.schema to .env
+# this will copy .env.schema to .env if not exist yet
 ```
 
-Then edit `.env` contents in your editor:
+Then edit [`.env`](./.env) contents in your editor. Refer to [`.env.defaults`](./.env.defaults) for the default values.
 
 ```conf
-DB_USERNAME=yourusername
-DB_PASSWORD=yourpassword
-DB_NAME=yourdatabase
-DB_HOST=localhost
-DB_PORT=3306
-DB_DIALECT=mysql
+DEVELOPMENT_DB_USERNAME=yourusername
+DEVELOPMENT_DB_PASSWORD=yourpassword
+DEVELOPMENT_DB_NAME=yourdatabasename
+DEVELOPMENT_DB_HOST=localhost
+DEVELOPMENT_DB_PORT=3306
+DEVELOPMENT_DB_DIALECT=mysql
+
+TEST_DB_USERNAME=yourusername
+TEST_DB_PASSWORD=yourpassword
+TEST_DB_NAME=yourdatabasename-test
+TEST_DB_HOST=localhost
+TEST_DB_PORT=3306
+TEST_DB_DIALECT=mysql
+
+PRODUCTION_DB_USERNAME=yourusername
+PRODUCTION_DB_PASSWORD=yourpassword
+PRODUCTION_DB_NAME=yourdatabasename
+PRODUCTION_DB_HOST=0.0.0.0
+PRODUCTION_DB_PORT=3306
+PRODUCTION_DB_DIALECT=mysql
 ```
 
-Create the `yourdatabase` (change this) database to your own database server.
+Create that `yourdatabase` (change this) database to your own database server.
+You can use CLI or GUI application.
 
-Run `migrate` script to migrate the tables and seed data into the database.
+Run `migrate` script _only once_ to run the migration files, create the tables and seed initial data into the database.
 
 ```sh
 yarn migrate
+# this will run all migrations/*.js and seeders/*.js
 ```
 
 ---
 
 ## Running
+
+Only run after the preparation, installation, and configuration are finished.
 
 ### Development
 
@@ -103,8 +121,6 @@ yarn start
 ---
 
 ## Extra Information
-
----
 
 ### REST API Endpoints
 
@@ -322,13 +338,13 @@ Login in CLI.
 heroku login
 ```
 
-Create `Procfile` and add this.
+Create `Procfile` and add this line.
 
 ```txt
 web: yarn start
 ```
 
-Create `app.json` and add this.
+Create `app.json` and add these lines.
 
 ```json
 {
@@ -340,10 +356,25 @@ Create `app.json` and add this.
 }
 ```
 
-Test your local app if run using Heroku.
+You can also install Heroku in your development dependencies.
+Please note that `devDependencies` will not be installed on production.
+
+```sh
+yarn add --dev heroku
+```
+
+Test your local app as if run using Heroku.
 
 ```sh
 heroku local web
+```
+
+Test your local app as if run using Heroku on `PRODUCTION` mode/environment.
+
+```sh
+yarn start:production
+# this will run
+# NODE_ENV=production heroku local web
 ```
 
 Go to your repo, then add heroku remote.
@@ -358,3 +389,9 @@ Push to Heroku through Git.
 ```sh
 git push heroku master
 ```
+
+On Heroku server, the repo will:
+
+1. Be cloned fresh either from push or GitHub new commit trigger.
+2. Run the dependency installation based on `package.json`.
+3. Automatically run the `install` and `run` scripts
