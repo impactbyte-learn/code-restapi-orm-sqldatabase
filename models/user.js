@@ -1,5 +1,6 @@
 'use strict'
 
+const Sequelize = require('sequelize')
 const models = require('./index')
 const Tasks = models.Task
 
