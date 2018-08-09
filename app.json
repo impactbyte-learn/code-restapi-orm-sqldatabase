@@ -1,0 +1,7 @@
+{
+  "name": "code-restapi-orm-sqldatabase",
+  "description": "REST API with ORM and SQL Database",
+  "repository": "https://github.com/impactbyte-learn/code-restapi-orm-sqldatabase",
+  "keywords": ["express", "api", "backend", "orm", "sql", "database"],
+  "image": "heroku/nodejs"
+}
