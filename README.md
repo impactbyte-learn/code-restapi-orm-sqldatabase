@@ -139,14 +139,14 @@ Follow this official guide: <http://docs.sequelizejs.com/manual/tutorial/migrati
 Install `sequelize` dependencies in your project.
 
 ```sh
-yarn add sequelize mysql2 mariadb sqlite
+yarn add sequelize mysql2
 ```
 
 Use `sequelize-cli` to initialize and configure the project.
 
 ```sh
 # install sequelize-cli globally
-yarn global add sequelize-cli sequelize mysql2 mariadb sqlite
+yarn global add sequelize-cli sequelize mysql2
 
 # so you can use it anywhere
 sequelize init
