@@ -94,11 +94,18 @@ PRODUCTION_DB_DIALECT=mysql
 Create that `yourdatabase` (change this) database to your own database server.
 You can use CLI or GUI application.
 
-Run `migrate` script _only once_ to run the migration files, create the tables and seed initial data into the database.
+Run `migrate` script _only once_ to run the migration files, create the tables into the database.
 
 ```sh
 yarn migrate
-# this will run all migrations/*.js and seeders/*.js
+# this will run all migrations/*.js
+```
+
+You can run `seed` script _only once_ also to run the seeder files, insert demo data into the database.
+
+```sh
+yarn seed
+# this will run all seeders/*.js
 ```
 
 ---
