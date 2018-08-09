@@ -10,34 +10,17 @@ module.exports = {
         primaryKey: true
       },
       name: {
-        type: Sequelize.STRING(200),
-        validate: {
-          len: [1, 200],
-          isAlphanumeric: true,
-          notEmpty: true
-        }
+        type: Sequelize.STRING(200)
       },
       username: {
         type: Sequelize.STRING(20),
         allowNull: false,
-        unique: true,
-        validate: {
-          len: [1, 20],
-          isAlphanumeric: true,
-          isLowercase: true,
-          notEmpty: true
-        }
+        unique: true
       },
       email: {
         type: Sequelize.STRING(100),
         allowNull: false,
-        unique: true,
-        validate: {
-          len: [1, 100],
-          isEmail: true,
-          isLowercase: true,
-          notEmpty: true
-        }
+        unique: true
       },
       createdAt: {
         type: Sequelize.DATE,
