@@ -8,6 +8,28 @@ Technologies:
 - [Sequelize](http://docs.sequelizejs.com) ORM
 - [MariaDB](https://mariadb.org)/[MySQL](https://mysql.com) database
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Code REST API ORM SQL Database](#code-rest-api-orm-sql-database)
+  - [Table of Contents](#table-of-contents)
+  - [Preparation](#preparation)
+    - [Database Installation](#database-installation)
+  - [Installation and Configuration](#installation-and-configuration)
+  - [Running](#running)
+    - [Development](#development)
+    - [Production](#production)
+  - [Extra Information](#extra-information)
+    - [REST API Endpoints](#rest-api-endpoints)
+    - [Data Schema](#data-schema)
+    - [How to Setup Sequelize](#how-to-setup-sequelize)
+    - [How to Integrate with Express](#how-to-integrate-with-express)
+    - [Database Dump](#database-dump)
+    - [How to Deploy with Heroku](#how-to-deploy-with-heroku)
+
+<!-- /TOC -->
+
 ---
 
 ## Preparation
@@ -82,6 +104,8 @@ yarn start
 
 ## Extra Information
 
+---
+
 ### REST API Endpoints
 
 | Endpoint     | HTTP   | Description           |
@@ -104,6 +128,8 @@ yarn start
   "name": "Your Full Name"
 }
 ```
+
+---
 
 ### Data Schema
 
@@ -132,7 +158,9 @@ yarn start
 }
 ```
 
-### How to Use Sequelize
+---
+
+### How to Setup Sequelize
 
 Follow this official guide: <http://docs.sequelizejs.com/manual/tutorial/migrations.html>
 
@@ -179,6 +207,8 @@ sequelize seed:generate --name demo-users
 # do the seeding from the configuration to the actual database
 sequelize db:seed:all
 ```
+
+---
 
 ### How to Integrate with Express
 
@@ -245,4 +275,86 @@ mysqldump yourdatabase --single-transaction --user=yourusername -p > yourfile.sq
 
 ```sh
 mysql yourdatabase --user=yourusername -p < yourfile.sql
+```
+
+---
+
+### How to Deploy with Heroku
+
+Create and login to your account on Heroku.
+
+**On Heroku Dashboard**
+
+Create the app on Heroku.
+
+Setup your "Config Vars": <https://dashboard.heroku.com/apps/yourappname/settings>, then "Reveal Config Vars".
+
+Put your `KEY` and `VALUE` respectively.
+
+```conf
+PRODUCTION_DB_USERNAME = yourusername
+PRODUCTION_DB_PASSWORD = yourpassword
+PRODUCTION_DB_NAME = yourdatabasename
+PRODUCTION_DB_HOST = 0.0.0.0
+PRODUCTION_DB_PORT = 3306
+PRODUCTION_DB_DIALECT = mysql
+```
+
+Make sure it's set correctly.
+
+You can also make it auto deploy in "Deployment Method" by connecting with GitHub: <https://dashboard.heroku.com/apps/yourappname/deploy/github>, then "Enable Automatic deploys".
+
+**On Your Local Computer**
+
+Install Heroku toolbelt CLI.
+
+```sh
+# on linux
+sudo apt install heroku
+
+# on mac
+brew install heroku
+```
+
+Login in CLI.
+
+```sh
+heroku login
+```
+
+Create `Procfile` and add this.
+
+```txt
+web: yarn start
+```
+
+Create `app.json` and add this.
+
+```json
+{
+  "name": "yourappname",
+  "description": "Your App Description",
+  "repository": "https://github.com/yourusername/yourappname",
+  "keywords": ["your", "key", "words"],
+  "image": "heroku/nodejs"
+}
+```
+
+Test your local app if run using Heroku.
+
+```sh
+heroku local web
+```
+
+Go to your repo, then add heroku remote.
+
+```sh
+heroku git:remote -a yourappname
+# set git remote heroku to https://git.heroku.com/yourappname.git
+```
+
+Push to Heroku through Git.
+
+```sh
+git push heroku master
 ```
