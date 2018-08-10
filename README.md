@@ -325,6 +325,14 @@ mysql yourdatabase --user=yourusername -p < yourfile.sql
 
 ### How to Deploy with Heroku
 
+You can also follow the official guides or community articles:
+
+- [Node.js | Heroku Dev Center](https://devcenter.heroku.com/categories/nodejs-support)
+- [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+- [Deploying Node.js Apps on Heroku](https://devcenter.heroku.com/articles/deploying-nodejs)
+- [Best Practices for Node.js Development | Heroku Dev Center](https://devcenter.heroku.com/articles/node-best-practices)
+- [How to Deploy a Node.js App to Heroku ― Scotch](https://scotch.io/tutorials/how-to-deploy-a-node-js-app-to-heroku) (published in 2014)
+
 Create and login to your account on Heroku.
 
 **On Heroku Dashboard**
@@ -368,6 +376,7 @@ heroku login
 
 Create `Procfile` and add this line.
 It will be used for Heroku on how to start the app.
+`Procfile` itself is defined by [`node-foreman`](https://github.com/strongloop/node-foreman.
 
 ```txt
 web: yarn start
