@@ -6,9 +6,8 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "install": "npm run setup && npm run migrate",
-    "install:undo": "npm run migrate:undo",
-    "setup": "./setup.sh",
+    "setup": "./setup.sh && npm run migrate",
+    "setup:undo": "npm run migrate:undo",
     "migrate": "sequelize db:migrate",
     "migrate:undo": "sequelize db:seed:undo:all",
     "seed": "sequelize db:seed:all",
