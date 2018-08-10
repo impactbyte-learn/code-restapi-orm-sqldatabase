@@ -43,12 +43,13 @@ models.sequelize.sync().then(function() {
    * Listen on provided port, on all network interfaces.
    */
   server.listen(port, function() {
-    console.log(`
-    Express server listening on port ${server.address().port}
-    `)
-    debug(`
-    Express server listening on port ${server.address().port}
-    `)
+    const message = `
+Express server listening
+in NODE_ENV=${process.env.NODE_ENV}
+on port ${server.address().port}
+    `
+    console.log(message)
+    debug(message)
   })
   server.on('error', onError)
   server.on('listening', onListening)
