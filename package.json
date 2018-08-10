@@ -14,7 +14,7 @@
     "seed:undo": "sequelize db:migrate:undo:all",
     "start": "node index",
     "dev": "node-dev index",
-    "test": "node test",
+    "test": "jest",
     "lint": "eslint *.js",
     "precommit": "pretty-quick --staged",
     "migrate:production": "sequelize db:migrate --env production && sequelize db:seed:all --env production",
@@ -37,16 +37,19 @@
     "mysql2": "^1.6.1",
     "prettier": "^1.14.2",
     "pretty-quick": "^1.6.0",
-    "sequelize": "^4.38.0",
-    "supertest": "3.1.0"
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0",
     "eslint": "^5.3.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "heroku": "^7.7.8",
+    "jest": "23.4.2",
     "node-dev": "^3.1.3",
     "prettier-eslint": "^8.8.2",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^4.0.0",
+    "superagent": "3.8.3"
   }
 }

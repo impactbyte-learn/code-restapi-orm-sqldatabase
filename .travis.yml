@@ -4,7 +4,7 @@ node_js:
 before_script:
   - yarn
   - yarn migrate:test
-script: yarn start
+script: yarn test
 cache:
   yarn: true
   directories:
