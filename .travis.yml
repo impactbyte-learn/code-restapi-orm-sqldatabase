@@ -5,6 +5,8 @@ before_script:
   - yarn
   - yarn migrate:test
 script: yarn test
+after_script:
+  - yarn migrate:test:undo
 cache:
   yarn: true
   directories:

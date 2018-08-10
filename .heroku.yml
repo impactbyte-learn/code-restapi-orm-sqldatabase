@@ -2,7 +2,7 @@ build:
   languages:
     - nodejs
   pre:
-    - npm run migrate
+    - yarn migrate
   post:
     - echo 'app installed'
 run:
