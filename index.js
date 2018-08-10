@@ -6,8 +6,8 @@ require('dotenv-extended').load({
   path: '.env',
   defaults: '.env.defaults',
   schema: '.env.schema',
-  errorOnMissing: false,
-  errorOnExtra: false,
+  errorOnMissing: true,
+  errorOnExtra: true,
   assignToProcessEnv: true,
   overrideProcessEnv: false
 })
