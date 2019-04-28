@@ -38,7 +38,7 @@
     "prettier": "^1.14.2",
     "pretty-quick": "^1.6.0",
     "sequelize": "^4.38.0",
-    "superagent": "3.8.3",
+    "superagent": "5.0.4",
     "supertest": "3.1.0"
   },
   "devDependencies": {
